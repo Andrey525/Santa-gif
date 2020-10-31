@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(112, 106, 155);
+}
+
+.image {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    height: 100px;
+}
+
+.list {
+    list-style: none;
+    /* display: inline-block; */
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    margin-left: -40px;
+    /* justify-content: space-between; */
+}
+
+input[type="button"] {
+    height: 50px;
+    width: 200px;
+    color: rgb(15, 176, 204);
+    background-color: rgb(170, 30, 30);
+    border-color: rgb(15, 176, 204);
+    border-width: 3px;
+    border-style: solid;
+    font-family: Kaushan Script;
+    font-size: 24px;
+    border-radius: 20px;
+}
+
+input[type="button"]:focus {
+    outline: none;
+}
+
+input[type="button"]:hover {
+    background: rgb(126, 18, 18);
+    color: rgb(16, 153, 177);
+    border-color: rgb(16, 153, 177);
+}
+
+input[type="button"]:active {
+    background-color: rgb(89, 100, 102);
+    border-color: rgb(16, 153, 177);
+    color: rgb(16, 153, 177);
+}
+
+@media (max-width: 720px) {
+    .image {
+        height: 80px;
+    }
+}
+
+@media (max-width: 560px) {
+    .list {
+        padding-top: 30px;
+    }
+    .image {
+        height: 50px;
+    }
+}

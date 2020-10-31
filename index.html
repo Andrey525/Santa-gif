@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Лабораторная 2.2</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet" />
+</head>
+
+<body style="background: url(img/Фон4.jpg);">
+    <script language="JavaScript">
+        var delay = 1000;
+        var flag = 0;
+
+        function animation() { // рекурсивно вызывается при запуске из StartTimer(), но тело выполняется при flag == 1
+            if (flag == 1) {
+                var url = document.MyImage.src; // получаю текущий адрес изображения
+                var count = url.indexOf("img/s"); // нахожу индекс начала строки img/s
+                var string = url.substr(count + 5); // обрезаю все что левее номера картинки
+                count = string.indexOf(".gif"); // нахожу индекс начала строки .gif
+                if (count == 1) {
+                    // если это первый символ, то
+                    string = string.substr(count - 1, count); // в стринг записываем одну "цифру"
+                } else if (count == 2) {
+                    // если это второй символ, то
+                    string = string.substr(count - 2, count); // в стринг записываем две "цифры"
+                }
+                if (string == 12) {
+                    // если 12, то надо обнулить
+                    string = 0;
+                }
+                string++;
+                image_url = "img/s" + string + ".gif"; // получаю новый адрес картинки
+                document.MyImage.src = image_url; // меняю на новый адрес
+
+            }
+            setTimeout('animation()', delay);
+        }
+
+        function slow() {
+            delay = delay + 500;
+            if (delay > 2000) {
+                delay = 2000;
+            }
+        }
+
+        function fast() {
+            delay = delay - 500;
+            if (delay < 100) {
+                delay = 100;
+            }
+        }
+
+        function start() {
+            delay = 1000;
+            flag = 1;
+        }
+
+        function stop() {
+            flag = 2;
+            delay = 5000;
+        }
+
+        function StartTimer() { // запуск рекурсивной функции animation
+            if (flag == 0) {
+                setTimeout('animation()', delay);
+            }
+        }
+    </script>
+    <form name="form1">
+        <img name="MyImage" src="img/s1.gif" alt="image" class="image" onLoad="StartTimer()" />
+        <ul>
+            <li class="list">
+                <input type="button" value="Start" onClick="start()" />
+            </li>
+            <li class="list">
+                <input type="button" value="Faster" onClick="fast()" />
+            </li>
+            <li class="list">
+                <input type="button" value="Slower" onClick="slow()" />
+            </li>
+            <li class="list">
+                <input type="button" value="Stop" onClick="stop()" />
+            </li>
+        </ul>
+
+    </form>
+</body>
+
+</html>
