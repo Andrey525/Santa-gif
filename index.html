@@ -13,18 +13,21 @@
         var delay = 1000;
         var flag = 0;
 
-        function animation() { // рекурсивно вызывается при запуске из StartTimer(), но тело выполняется при flag == 1
-            if (flag == 1) {
+        function animation() { // рекурсивно вызывается при запуске из StartTimer(), 
+            if (flag == 1) { // но тело выполняется при flag == 1
                 var url = document.MyImage.src; // получаю текущий адрес изображения
                 var count = url.indexOf("img/s"); // нахожу индекс начала строки img/s
-                var string = url.substr(count + 5); // обрезаю все что левее номера картинки
+                // обрезаю все что левее номера картинки
+                var string = url.substr(count + 5);
                 count = string.indexOf(".gif"); // нахожу индекс начала строки .gif
                 if (count == 1) {
                     // если это первый символ, то
-                    string = string.substr(count - 1, count); // в стринг записываем одну "цифру"
+                    string = string.substr(count - 1, count);
+                    // в стринг записываем одну "цифру"
                 } else if (count == 2) {
                     // если это второй символ, то
-                    string = string.substr(count - 2, count); // в стринг записываем две "цифры"
+                    string = string.substr(count - 2, count);
+                    // в стринг записываем две "цифры"
                 }
                 if (string == 12) {
                     // если 12, то надо обнулить
@@ -59,7 +62,6 @@
 
         function stop() {
             flag = 2;
-            delay = 5000;
         }
 
         function StartTimer() { // запуск рекурсивной функции animation
